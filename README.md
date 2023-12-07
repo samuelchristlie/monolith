@@ -25,7 +25,22 @@
 ![github last commit badge](https://badgen.net/github/last-commit/samuelchristlie/monolith?icon=github)
 </div>
 
-**Monolith** is a stateless password manager written in Go. It allows you to generate strong and secure password on the fly, without having to store it
+**Monolith** is a stateless password manager written in Go. It allows you to generate strong and secure password on the fly, without having to store it. Monolith allows you to have different passwords for each website/service by just remembering your master password. Monolith takes 3 main inputs: website, login, and master password. In addition, it also supports additional options such as custom password length and character sets. 
+
+Monolith currently uses **PBKDF2** and the more memory-intensive **Scrypt** (pronounced "ess crypt") key derivation function to generate passwords, picked based on [NIST](https://pages.nist.gov/800-63-3/sp800-63-3.html) and [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) guidelines.
+
+The parameter used in **Monolith** is as follows
+
+**PBKDF2**
+- SHA-256 hash algorithm
+- 600,000 iterations
+
+**Scrypt**
+- 2^14 (16 MiB) CPU/memory cost parameter
+- 8 (1024 bytes) block size
+- 5 degree of parallelism
+
+
 
 ## Features 💪
 - **No Data Stored**: Monolith doesn't store any of your data, ensuring the security of your passwords.
